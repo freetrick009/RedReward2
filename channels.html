@@ -213,28 +213,21 @@ CLAIM
 
 <script>
 
-const joined=[false,false,false,false,false,false,];
+const joined = [false, false, false, false, false, false];
 
 function joinChannel(index, button) {
     joined[index - 1] = true;
-
     button.innerHTML = "✓ JOINED";
     button.classList.add("joined");
-
-    console.log(joined);
 }
 
-document.getElementById("claimBtn").onclick=function(){
+document.getElementById("claimBtn").onclick = function () {
 
-if(joined.every(v=>v)){
-
-window.location.href="cashback-success.html";
-
-}else{
-
-alert("⚠ Please join all Telegram channels before claiming your cashback.");
-
-}
+    if (joined.every(v => v)) {
+        window.location.href = "cashback-success.html";
+    } else {
+        alert("⚠ Please join all Telegram channels before claiming your cashback.");
+    }
 
 }
 
