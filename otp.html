@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTP Verification</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:url("assets/background.jpg") center center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:340px;
+background:rgba(255,255,255,.95);
+border-radius:20px;
+padding:25px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+h2{
+color:#b30000;
+margin-bottom:10px;
+}
+
+p{
+font-size:14px;
+color:#666;
+margin-bottom:20px;
+}
+
+.otp{
+display:flex;
+justify-content:space-between;
+gap:8px;
+margin-bottom:25px;
+}
+
+.otp input{
+width:35px;
+height:30px;
+border:2px solid #ddd;
+border-radius:12px;
+font-size:22px;
+text-align:center;
+outline:none;
+}
+
+.otp input:focus{
+border-color:#d40000;
+}
+
+button{
+width:100%;
+height:50px;
+border:none;
+border-radius:30px;
+background:#d40000;
+color:#fff;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.resend{
+margin-top:18px;
+font-size:14px;
+}
+
+.resend a{
+color:#b30000;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>OTP Verification</h2>
+
+<p>Enter the 6-digit OTP sent to your mobile number.</p>
+
+<div class="otp">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+</div>
+
+<button onclick="window.location.href='success.html'">
+Verify OTP
+</button>
+
+<div class="resend">
+    Didn't receive the OTP?<br><br>
+
+    <span id="timer">Resend OTP in 60s</span>
+
+    <a href="#" id="resendLink" style="display:none;">
+        🔄 Resend OTP
+    </a>
+</div>
+</div>
+
+<script>
+const inputs = document.querySelectorAll(".otp input");
+
+// Auto move to next box
+inputs.forEach((input, index) => {
+
+    input.addEventListener("input", () => {
+
+        if (input.value.length === 1 && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+        }
+
+    });
+
+    input.addEventListener("keydown", (e) => {
+
+        if (e.key === "Backspace" &&
+            input.value === "" &&
+            index > 0) {
+
+            inputs[index - 1].focus();
+        }
+
+    });
+
+});
+
+// Countdown Timer
+let seconds = 60;
+
+const timer = document.getElementById("timer");
+const resendLink = document.getElementById("resendLink");
+
+const countdown = setInterval(() => {
+
+    seconds--;
+
+    timer.innerHTML = "Resend OTP in " + seconds + "s";
+
+    if (seconds <= 0) {
+
+        clearInterval(countdown);
+
+        timer.style.display = "none";
+        resendLink.style.display = "inline";
+
+    }
+
+}, 1000);
+
+// Restart timer when Resend OTP is clicked
+resendLink.onclick = function(e){
+
+    e.preventDefault();
+
+    location.reload();
+
+};
+
+// Demo auto-fill OTP after 3 seconds
+setTimeout(() => {
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    for(let i = 0; i < 6; i++){
+        inputs[i].value = otp[i];
+    }
+
+    document.querySelector("button").innerHTML = "Verifying...";
+
+    setTimeout(() => {
+        window.location.href = "success.html";
+    }, 2000);
+
+}, 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spin & Win</title>
+
+<link rel="stylesheet" href="spin.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+          <div class="top-logo">
+    <img src="assets/logo.png" alt="Logo">
+</div>
+
+<h2 class="brand">Nestlé Rewards</h2>
+    <h1>
+        <span>SPIN THE WHEEL</span>
+        <strong>LIVE NOW</strong>
+    </h2>
+
+    <div class="wheel-area">
+
+        <div class="pointer"></div>
+
+        <canvas
+            id="wheel"
+            width="290"
+            height="290">
+        </canvas>
+
+    </div>
+
+    <button id="spinBtn">
+        TAP TO SPIN
+    </button>
+
+</div>
+
+
+<!-- Celebration Popup -->
+<div id="popup" class="popup">
+    <div class="popup-box">
+
+        ...
+
+        <h3 id="winAmount">₹50</h3>
+
+        <p>🎉 Congratulations you won this cashback 🎉</p>
+        <input
+    type="text"
+    id="upiId"
+    placeholder="Enter your UPI ID"
+    autocomplete="off"
+>
+
+<button id="claimBtn">
+    CONTINUE 
+</button>
+
+    </div>
+    
+</div>
+
+<script src="spin.js"></script>
+
+
+</body>
+</html>

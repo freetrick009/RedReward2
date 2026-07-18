@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cashback Submitted</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("assets/background.jpg") no-repeat center center;
+background-size:cover;
+background-attachment:fixed;
+overflow:hidden;
+position:relative;
+}
+
+.popup{
+width:90%;
+max-width:380px;
+background:#fff;
+border-radius:30px;
+padding:35px 25px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+animation:popup .5s ease;
+}
+
+.icon{
+font-size:70px;
+animation:bounce 1.2s infinite;
+}
+
+h2{
+margin:15px 0 10px;
+font-size:30px;
+color:#0a8f3d;
+}
+
+.amount{
+font-size:22px;
+font-weight:bold;
+color:#c00000;
+margin-bottom:15px;
+}
+
+p{
+font-size:18px;
+line-height:1.6;
+color:#555;
+}
+
+.note{
+margin-top:18px;
+font-size:15px;
+color:#888;
+}
+
+.btn{
+margin-top:25px;
+width:100%;
+height:58px;
+border:none;
+border-radius:40px;
+background:linear-gradient(180deg,#ffe46b,#ffc107);
+color:#7b0000;
+font-size:20px;
+font-weight:900;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+transition:.3s;
+box-shadow:
+0 0 15px rgba(255,215,0,.6),
+0 0 35px rgba(255,193,7,.45),
+0 10px 25px rgba(255,193,7,.35);
+animation:glow 1.8s ease-in-out infinite alternate;
+}
+
+.btn:hover{
+transform:translateY(-3px) scale(1.03);
+}
+
+.btn:active{
+transform:scale(.97);
+}
+
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:70%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.85),
+transparent
+);
+animation:shine 2.5s linear infinite;
+}
+
+@keyframes glow{
+0%{
+box-shadow:
+0 0 10px rgba(255,215,0,.5),
+0 0 25px rgba(255,193,7,.35);
+}
+100%{
+box-shadow:
+0 0 25px rgba(255,215,0,.9),
+0 0 60px rgba(255,193,7,.7);
+}
+}
+
+@keyframes shine{
+0%{
+left:-120%;
+}
+100%{
+left:140%;
+}
+}
+
+@keyframes popup{
+from{
+opacity:0;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="popup">
+
+<div class="icon">🎉💰</div>
+
+<h2>Congratulations!</h2>
+
+<div class="amount">✅ Cashback Request Submitted</div>
+
+<p>
+🎁 Your cashback request has been received successfully.<br><br>
+💸 Your reward will be processed and sent to your UPI account within <b>24 hours</b>.
+</p>
+
+<div class="note">
+⏳ Please keep your Telegram channels joined until the payment is completed.
+</div>
+
+<button class="btn" onclick="window.close()">
+Done
+</button>
+
+</div>
+
+</body>
+</html>

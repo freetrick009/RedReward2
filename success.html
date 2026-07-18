@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Success</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial,sans-serif;
+
+background:url("assets/background.jpg") center center/cover no-repeat;
+position:relative;
+}
+
+body::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(6px);
+}
+
+.success-card{
+position:relative;
+z-index:1;
+}
+
+.success-card{
+width:320px;
+background:#fff;
+border-radius:26px;
+padding:40px 25px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+animation:popup .35s ease;
+}
+
+.check-circle{
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:#1ecb5d;
+color:#fff;
+font-size:55px;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 0 30px rgba(30,203,93,.5);
+animation:pulse 1.2s infinite;
+}
+
+.success-card h2{
+margin:25px 0 10px;
+color:#c40000;
+font-size:30px;
+}
+
+.success-card p{
+color:#666;
+font-size:16px;
+margin-bottom:25px;
+}
+
+.loader{
+width:40px;
+height:40px;
+margin:0 auto 15px;
+border:4px solid #eee;
+border-top:4px solid #d40000;
+border-radius:50%;
+animation:spin .8s linear infinite;
+}
+
+.redirect{
+font-size:15px;
+color:#777;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.08);}
+}
+
+@keyframes popup{
+from{opacity:0;transform:scale(.8);}
+to{opacity:1;transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="success-card">
+
+<div class="check-circle">
+✓
+</div>
+
+<h2>Verification Complete</h2>
+
+<p>Mobile number verified successfully.</p>
+
+<div class="loader"></div>
+
+<span class="redirect">
+Redirecting to your reward...
+</span>
+
+</div>
+
+<script>
+setTimeout(function () {
+    window.location.href = "spin.html";
+},1200);
+</script>
+
+</body>
+</html>

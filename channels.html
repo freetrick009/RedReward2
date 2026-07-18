@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Our Channels</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("assets/background.jpg") no-repeat center center;
+background-size:cover;
+background-attachment:fixed;
+overflow:hidden;
+position:relative;
+}
+
+.container{
+width:100%;
+max-width:420px;
+margin:20px auto;
+background:#fff;
+border-radius:30px;
+padding:28px;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+h2{
+text-align:center;
+font-size:36px;
+color:#c00000;
+margin-bottom:10px;
+}
+
+p{
+text-align:center;
+font-size:18px;
+color:#666;
+margin-bottom:25px;
+line-height:1.5;
+}
+
+.channel-list{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-bottom:25px;
+max-height:420px;
+overflow-y:auto;
+padding-right:5px;
+}
+
+.channel-list::-webkit-scrollbar{
+width:6px;
+}
+
+.channel-list::-webkit-scrollbar-thumb{
+background:#ccc;
+border-radius:20px;
+}
+
+.join-btn{
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+height:60px;
+border-radius:40px;
+text-decoration:none;
+background:linear-gradient(180deg,#2AABEE,#0088CC);
+color:#fff;
+font-size:22px;
+font-weight:800;
+box-shadow:0 10px 22px rgba(0,136,204,.35);
+transition:.25s;
+}
+
+.join-btn.joined{
+background:linear-gradient(180deg,#32c85a,#159a37);
+}
+
+.done-btn{
+width:100%;
+height:60px;
+border:none;
+border-radius:40px;
+background:linear-gradient(180deg,#ffe46b,#ffc107);
+color:#7b0000;
+font-size:22px;
+font-weight:900;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 0 15px rgba(255,215,0,.6),
+0 0 35px rgba(255,193,7,.45),
+0 10px 25px rgba(255,193,7,.35);
+animation:glow 1.8s ease-in-out infinite alternate;
+transition:.25s;
+}
+
+.done-btn:hover{
+transform:translateY(-3px) scale(1.02);
+}
+
+.done-btn:active{
+transform:scale(.97);
+}
+
+.done-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:70%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.85),
+transparent
+);
+animation:shine 2.5s linear infinite;
+}
+
+@keyframes glow{
+0%{
+box-shadow:
+0 0 10px rgba(255,215,0,.5),
+0 0 25px rgba(255,193,7,.35);
+}
+100%{
+box-shadow:
+0 0 25px rgba(255,215,0,.9),
+0 0 55px rgba(255,193,7,.7);
+}
+}
+
+@keyframes shine{
+100%{
+left:150%;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Join Our Channels</h2>
+
+<p>Join all Telegram channels before claiming your cashback.</p>
+
+<div class="channel-list">
+
+<a href="https://t.me/YOUR_CHANNEL_1" target="_blank" class="join-btn" onclick="joinChannel(1,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_2" target="_blank" class="join-btn" onclick="joinChannel(2,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_3" target="_blank" class="join-btn" onclick="joinChannel(3,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_4" target="_blank" class="join-btn" onclick="joinChannel(4,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_5" target="_blank" class="join-btn" onclick="joinChannel(5,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_5" target="_blank" class="join-btn" onclick="joinChannel(6,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_5" target="_blank" class="join-btn" onclick="joinChannel(7,this)">JOIN</a>
+
+<a href="https://t.me/YOUR_CHANNEL_5" target="_blank" class="join-btn" onclick="joinChannel(8,this)">JOIN</a>
+
+</div>
+
+<button class="done-btn" id="claimBtn">
+CLAIM
+</button>
+
+</div>
+
+<script>
+
+const joined=[false,false,false,false,false,false,false,false];
+
+function joinChannel(index,button){
+
+joined[index]=true;
+
+button.innerHTML="✓ JOINED";
+
+button.classList.add("joined");
+
+}
+
+document.getElementById("claimBtn").onclick=function(){
+
+if(joined.every(v=>v)){
+
+window.location.href="cashback-success.html";
+
+}else{
+
+alert("⚠ Please join all Telegram channels before claiming your cashback.");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
