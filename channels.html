@@ -197,11 +197,10 @@ const joined=[false,false,false,false,false,false,false,false];
 
 function joinChannel(index,button){
 
-joined[index]=true;
+    joined[index-1]=true;
 
-button.innerHTML="✓ JOINED";
-
-button.classList.add("joined");
+    button.innerHTML="✓ JOINED";
+    button.classList.add("joined");
 
 }
 
