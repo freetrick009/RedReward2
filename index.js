@@ -1,6 +1,8 @@
+const express = require("express");
 const { Telegraf } = require("telegraf");
 const path = require("path");
 
+const app = express();
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.start(async (ctx) => {
@@ -32,6 +34,18 @@ bot.start(async (ctx) => {
   }
 });
 
-bot.launch();
+// Home route
+app.get("/", (req, res) => {
+  res.send("✅ Railway server is running.");
+});
 
+// Start Telegram Bot
+bot.launch();
 console.log("✅ Bot is running...");
+
+// Start Express Server
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🌐 Server running on port ${PORT}`);
+});
