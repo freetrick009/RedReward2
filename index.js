@@ -26,7 +26,7 @@ bot.start(async (ctx) => {
               {
                 text: "🎁 Open Mini App",
                 web_app: {
-                  url: "https://nestle-kitkat-reward.netlify.app"
+                 url: "https://freetrick009.github.io/RedReward2/"
                 }
               }
             ]
