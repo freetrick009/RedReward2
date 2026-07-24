@@ -11,14 +11,14 @@ bot.start(async (ctx) => {
     { source: imagePath },
     {
       caption:
-        "🍫 *Welcome to the Nestlé KitKat Cashback Rewards!* 🎉\n\n🎁 Claim your exclusive cashback in just a few simple steps.\n\n👇 Tap the button below to get started!",
+        "🍫 *Welcome to the Nestlé KitKat Cashback Rewards!* 🎉\n\n🎁 Claim your exclusive cashback in just a few simple steps.\n\n👇 Tap the Claim button below to get started!",
       parse_mode: "Markdown",
     }
   );
 
   // Send Mini App button
   await ctx.reply(
-    "👇 Open the Mini App",
+    "
     Markup.keyboard([
       [
         Markup.button.webApp(
