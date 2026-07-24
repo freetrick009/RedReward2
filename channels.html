@@ -224,7 +224,12 @@ CLAIM
 const tg = window.Telegram.WebApp;
 tg.ready();
 
-console.log(userId);
+const userId = tg.initDataUnsafe?.user?.id;
+
+alert(
+"Telegram ID: " + userId +
+"\nInit data: " + tg.initData
+);;
 
 
 document.getElementById("claimBtn").onclick = async function(){
