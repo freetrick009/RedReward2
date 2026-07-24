@@ -218,25 +218,75 @@ CLAIM
 
 <script>
 
-const joined = [false, false, false, false, false, false];
+const tg = window.Telegram.WebApp;
+tg.ready();
 
-function joinChannel(index, button) {
-    joined[index - 1] = true;
-    button.innerHTML = "✓ JOINED";
-    button.classList.add("joined");
-}
+const userId = tg.initDataUnsafe?.user?.id;
 
-document.getElementById("claimBtn").onclick = function () {
 
-    if (joined.every(v => v)) {
-        window.location.href = "cashback-success.html";
-    } else {
-        alert("⚠ Please join all Telegram channels before claiming your cashback.");
+document.getElementById("claimBtn").onclick = async function(){
+
+    if(!userId){
+        alert("Please open this page from Telegram.");
+        return;
     }
 
-}
 
-</script>
+    const btn = this;
+    btn.innerHTML = "CHECKING...";
 
+
+    try{
+
+        const response = await fetch(
+            "https://redreward2-production.up.railway.app/verify",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    userId:userId
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if(data.success){
+
+            btn.innerHTML = "✅ VERIFIED";
+
+            setTimeout(()=>{
+                window.location.href="cashback-success.html";
+            },1000);
+
+
+        }else{
+
+            btn.innerHTML="CLAIM";
+
+            alert(
+            "⚠ Please join all Telegram channels before claiming."
+            );
+
+        }
+
+
+    }catch(error){
+
+        console.log(error);
+
+        btn.innerHTML="CLAIM";
+
+        alert("Server connection error");
+
+    }
+
+};
+
+    </script>
 </body>
 </html>
